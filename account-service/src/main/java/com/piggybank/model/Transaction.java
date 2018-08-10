@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -18,13 +19,13 @@ public class Transaction extends AbstractDocument {
      private TrasactionType type;
      private Category category;
      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-     private Date txnDate = new Date();
+     private LocalDate txnDate;
 
-     public Transaction(Account account, BigDecimal amount, TrasactionType type, Category category) {
+     public Transaction(Account account, BigDecimal amount, Category category , LocalDate txnDate) {
           this.account = account;
           this.amount = amount;
-          this.type = type;
+          this.type = category.getTransactiontype(category);
           this.category = category;
-          this.txnDate = new Date();
+          this.txnDate = txnDate;
      }
 }
