@@ -3,3 +3,4 @@ version: '3'
 services:
   account-service:
     build: './account-service'
+    image: rajaramkk/piggybank_account-service
